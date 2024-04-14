@@ -7,7 +7,7 @@ function GroupbyStatus(dataArray){
     }, {});
 
     // Assurez-vous que toutes les valeurs possibles sont incluses
-    ['closed', 'active', 'hold'].forEach(status => {
+    ['Closed', 'Active', 'Hold'].forEach(status => {
         if (!(status in counts)) {
             counts[status] = 0;
         }
@@ -15,6 +15,12 @@ function GroupbyStatus(dataArray){
 
     return counts;
 }
+
+const counts = GroupbyStatus(dataArray);
+
+// Affiche le décompte de chaque statut
+console.log(counts);
+
 
 
   // Créer un objet pour stocker les dates de création et le nombre de participants correspondant
