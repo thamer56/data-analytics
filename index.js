@@ -1,17 +1,22 @@
 // import data 
 const dataArray = require("./sData.js");
 function GroupbyStatus(dataArray){
-
     const counts = dataArray.reduce((acc, obj) => {
         acc[obj.status] = (acc[obj.status] || 0) + 1;
         return acc;
-      }, {});
-      
-      const result = Object.keys(counts).map(status => ({ status, count: counts[status] }));
-      return result;
+    }, {});
+
+    // Assurez-vous que toutes les valeurs possibles sont incluses
+    ['closed', 'active', 'hold'].forEach(status => {
+        if (!(status in counts)) {
+            counts[status] = 0;
+        }
+    });
+
+    return counts;
 }
-  console.log(counts);
-  console.log(result);
+
+
   // Créer un objet pour stocker les dates de création et le nombre de participants correspondant
 const participantsByMonth = {};
 
