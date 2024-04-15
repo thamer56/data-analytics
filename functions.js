@@ -1,3 +1,4 @@
+const dataArray = require("./sData.js");
 function GroupbyStatus(dataArray){
     const counts = dataArray.reduce((acc, obj) => {
         acc[obj.status] = (acc[obj.status] || { count: 0, totalResponses: 0 });
@@ -19,21 +20,23 @@ function GroupbyStatus(dataArray){
 
 
 
- function calculateParticipantsByMonth(dataArray) {
-    const participantsByMonth = {};
+function calculateParticipantsByMonth(dataArray) {
+  const participantsByMonth = {};
+
+  dataArray.forEach(survey => {
+    const createdDate = new Date(survey.createdDate * 1000);
+    const monthYear = createdDate.toLocaleString('default', { month: 'short', year: 'numeric' });
+
+    if (participantsByMonth[monthYear]) {
+      participantsByMonth[monthYear] += survey.numberOfResponses;
+    } else {
+      participantsByMonth[monthYear] = survey.numberOfResponses;
+    }
+  });
+
+  return participantsByMonth;
+}
+
   
-    dataArray.forEach(survey => {
-      const createdDate = new Date(survey.createdDate * 1000);
-      const monthYear = createdDate.toLocaleString('default', { month: 'short', year: 'numeric' });
-  
-      if (participantsByMonth[monthYear]) {
-        participantsByMonth[monthYear] += survey.numberOfResponses;
-      } else {
-        participantsByMonth[monthYear] = survey.numberOfResponses;
-      }
-    });
-  
-    return participantsByMonth;
-  }
   module.exports = { GroupbyStatus, calculateParticipantsByMonth };
   
