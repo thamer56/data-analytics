@@ -23,26 +23,23 @@ console.log(counts);
 
 
 
-  // Créer un objet pour stocker les dates de création et le nombre de participants correspondant
-const participantsByMonth = {};
-
-// Parcourir le tableau dataArray
-dataArray.forEach(survey => {
-  // Convertir la date de création en une date lisible
-  const createdDate = new Date(survey.createdDate * 1000);
+function calculateParticipantsByMonth(dataArray) {
+    const participantsByMonth = {};
   
-  // Récupérer le mois et l'année de la date
-  const monthYear = createdDate.toLocaleString('default', { month: 'short', year: 'numeric' });
-
-  // Vérifier si le mois existe déjà dans participantsByMonth
-  if (participantsByMonth[monthYear]) {
-    // Ajouter le nombre de participants actuel au total existant
-    participantsByMonth[monthYear] += survey.numberOfResponses;
-  } else {
-    // Si le mois n'existe pas encore, initialiser le total avec le nombre de participants actuel
-    participantsByMonth[monthYear] = survey.numberOfResponses;
+    dataArray.forEach(survey => {
+      const createdDate = new Date(survey.createdDate * 1000);
+      const monthYear = createdDate.toLocaleString('default', { month: 'short', year: 'numeric' });
+  
+      if (participantsByMonth[monthYear]) {
+        participantsByMonth[monthYear] += survey.numberOfResponses;
+      } else {
+        participantsByMonth[monthYear] = survey.numberOfResponses;
+      }
+    });
+  
+    return participantsByMonth;
   }
-});
-
-// Afficher le nombre de participants par mois de création
-console.log(participantsByMonth);
+  
+  const participantsByMonth = calculateParticipantsByMonth(dataArray);
+  console.log(participantsByMonth);
+  
