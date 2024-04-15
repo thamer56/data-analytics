@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "data-forge-fs": "^0.0.9",
     "moment": "^2.30.1"
   }
 }

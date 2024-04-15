@@ -1,9 +1,10 @@
 const dataArray = require("./sData.js");
-const { GroupbyStatus, calculateParticipantsByMonth } = require("./functions.js");
-
+const { GroupbyStatus, calculateParticipantsByMonth } = require("./data-forge.js");
+console.time()
 const counts = GroupbyStatus(dataArray);
 console.log(counts);
-
-
+console.timeEnd()
+console.time()
 const countsByMonth = calculateParticipantsByMonth(dataArray);
 console.log(countsByMonth);
+console.timeEnd()
