@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "danfo": "^0.3.0",
     "data-forge-fs": "^0.0.9",
     "moment": "^2.30.1"
   }
