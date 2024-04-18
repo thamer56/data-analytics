@@ -9,8 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "danfo": "^0.3.0",
+    "danfojs": "^1.1.2",
     "data-forge-fs": "^0.0.9",
-    "moment": "^2.30.1"
+    "moment": "^2.30.1",
+    "yarn": "^1.22.22"
   }
 }
