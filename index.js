@@ -9,4 +9,3 @@ const countsByMonth = calculateParticipantsByMonth(dataArray);
 console.log(countsByMonth);
 console.timeEnd()
 //firebase -> firestore (no sql)
-console.log('thamer')
